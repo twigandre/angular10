@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-lg-3">
+        <label class="controle-label required"><b>Data:</b></label>
+        <input 
+            type="date" 
+            name="data-registro"
+            id="data-registro"
+            class="form-control"
+            [(ngModel)]="parametros.dataCadastro"
+        >
+    </div>
+    <div class="col-lg-3">
+        <label class="controle-label required"><b>Descriminação:</b></label>
+        <input 
+            type="text"
+            class="form-control"
+            max="3000-12-31"
+			autocomplete="off" 
+            name="descriminacap"
+            id="descriminacap"
+            class="form-control"
+            [(ngModel)]="parametros.descriminacao"
+        >
+    </div>
+             
+</div>

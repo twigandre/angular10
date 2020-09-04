@@ -1,0 +1,13 @@
+.tela-login{
+    width: 335px;
+	height: 100px;
+	padding: 20px;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	margin: -70px 0 0 -170px;
+}
+
+.left{
+    margin-left: 12px;
+}

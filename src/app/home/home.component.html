@@ -1,0 +1,58 @@
+<div>
+    <header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a routerLink="/login"><b>Logout</b></a></li>
+                        <li><a (click)="selecionaItem(1)"><b>Caderno Cinza - Caixa</b></a></li>
+                        <li><a (click)="selecionaItem(2)"><b>Despesas Gerais</b></a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="dropbtn"><b>. . .</b></button>
+                    <div class="dropdown-content">
+                      <a (click)="selecionaItem(3)"><b>Compras</b></a>
+                      <a (click)="selecionaItem(4)"><b>Faturamento</b></a>
+                      <a (click)="selecionaItem(5)"><b>Itaú</b></a>
+                    </div>
+                </div>
+                   
+            </div>        
+        </div>        
+    </header>
+    
+    <div class="row margin-left-panel">
+        <div class="col-lg-11">
+            <section class="panel panel-default">        
+                <div class="panel-body">        
+                    <div>		
+                        <!--##Caderno Cinza - Caixa##-->
+                        <div *ngIf="isCadernoCinza">
+                            <app-caderno-cinza></app-caderno-cinza>
+                        </div>
+                        <!--##Despesas Gerais##-->           
+                        <div *ngIf="isDespesasGerais">
+                            <app-despesas-gerais></app-despesas-gerais>									
+                        </div> 
+                         <!--##Compras##-->           
+                         <div *ngIf="isCompras">
+                            <app-compras></app-compras>									
+                        </div> 
+                         <!--##Faturamento##-->           
+                         <div *ngIf="isFaturamento">
+                            <app-faturamento></app-faturamento>									
+                        </div>
+                        <!--##Itau##-->           
+                        <div *ngIf="isItau">
+                            <app-itau></app-itau>									
+                        </div>                        
+                    </div>        
+                </div>        
+            </section>        
+        </div>
+    </div>  
+
+</div>
+
