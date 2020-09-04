@@ -5305,10 +5305,10 @@ button.close {
 
 .modal-header {
     padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #151515;
     min-height: 16.43px;
-    background-color: #00552b;
-    color: white
+    background-color:  #F5DA81;
+    color: #151515;
 }
 
 .modal-title {
@@ -5317,6 +5317,7 @@ button.close {
 }
 
 .modal-body {
+    background-color: #ebe9e9;
     position: relative;
     padding: 15px
 }
@@ -10922,8 +10923,8 @@ button.toast-close-button {
 }
 
 .bg-primary {
-    background-color: #00552b;
-    color: #5cd3ff
+    background-color: #F5DA81;
+    color: #000;
 }
 
 .bg-primary .lt,
@@ -14032,7 +14033,7 @@ body.container {
 .contrast .bg-primary.navbar .nav>li.active>a,
 .contrast .bg-success.navbar .nav>li.active>a,
 .contrast .bg-warning.navbar .nav>li.active>a {
-    color: #fff;
+    color: #F5DA81;
     background-color: #272525
 }
 
