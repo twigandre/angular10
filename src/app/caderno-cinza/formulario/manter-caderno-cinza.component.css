@@ -1,0 +1,9 @@
+.label-modal{
+    color: black;
+}
+
+/*
+<input mask-number [mask]="'99999-999'" name="valCode" [(ngModel)]="valCode">
+<input mask-number [mask]="'(99) 999999999'" [reqMin]="13" name="valPhone" [(ngModel)]="valPhone">   
+<input mask-money [prefix]="'R$'" name="valMoney" [(ngModel)]="valMoney">
+*/

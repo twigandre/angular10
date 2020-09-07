@@ -11,12 +11,14 @@ export class CadernoCinzaComponent implements OnInit {
 
   parametros : any = {}
 
+  @ViewChild('appModalCadernoCinza') appModalCadernoCinza;
+
   constructor() { }
 
   ngOnInit(): void { }
-
-  validar(){
-    
+  
+  novo(){
+    this.appModalCadernoCinza.abrir();
   }
 
 }
