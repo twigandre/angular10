@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable, ViewChild, Output, EventEmitter, ElementRef, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../shared/service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,15 @@ export class LoginComponent implements OnInit {
   login : string;
   senha : string;
   parametros: any = {};
+  statusLogin : number;
+  
+  sucesso : number = 200;
+  erro : number = 400;
+
 
   constructor(
     private route: ActivatedRoute,
+    private LoginService: LoginService,
 		private router: Router		
   ) { }
 
@@ -23,14 +30,25 @@ export class LoginComponent implements OnInit {
 
   validar(){
 
-    if(this.login != "admin" || !this.login){
+    if(!this.login){
       alert("Login inválido");      
     } 
-    else if(this.senha != "admin" || !this.senha){
+    else if(!this.senha){
       alert("Senha inválida");    
     } 
     else{
-      this.navigate();
+     
+      var objetoLogin : any = {
+        login : this.login,
+        senha : this.senha
+      }
+
+      this.LoginService.logar(objetoLogin).subscribe((result: any) => 
+      {
+          (result == 400 || !result) ? 
+            alert("Usuário nao Encontrado!") :
+              this.navigate();
+      });
     }
 
   }
@@ -39,6 +57,5 @@ export class LoginComponent implements OnInit {
     var rota: any = "/home";
     this.router.navigate([rota]);
   }
-
-
+  
 }

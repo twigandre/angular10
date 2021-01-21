@@ -27,10 +27,8 @@ export class ManterCadernoCinzaComponent implements OnInit {
 		this.appModalCadernoCinzaBack.nativeElement.style.display = 'none';
   }
 
-  validar(){    
-  }
-
-  formataValor(){    
+  validar(){
+    
   }
 
 }
