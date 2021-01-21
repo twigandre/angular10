@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
@@ -20,7 +20,7 @@ namespace back_end_core.Controllers
         [HttpPost]
         public int Post([FromBody] object objeto)
         {
-            return 400;
+            return 200;
         }
 
 
