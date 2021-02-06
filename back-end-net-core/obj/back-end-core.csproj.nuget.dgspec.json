@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-core\\back-end-core.csproj": {}
+    "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-net-core\\back-end-core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-core\\back-end-core.csproj": {
+    "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-net-core\\back-end-core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-core\\back-end-core.csproj",
+        "projectUniqueName": "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-net-core\\back-end-core.csproj",
         "projectName": "back-end-core",
-        "projectPath": "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-core\\back-end-core.csproj",
+        "projectPath": "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-net-core\\back-end-core.csproj",
         "packagesPath": "C:\\Users\\SUFRAMA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-core\\obj\\",
+        "outputPath": "C:\\Users\\SUFRAMA\\Desktop\\EMPRESA\\git\\projeto\\angular10\\back-end-net-core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
