@@ -30,12 +30,25 @@ export class LoginComponent implements OnInit {
 
   validar(){
 
-    if(!this.login){
-      alert("Login inválido");      
+    let regexCaractereEspecial = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]$/; 
+    let regexAcento = /^[ÁÀÂÃÉÈÍÏÓÔÕÖÚÑ]+$/
+
+    if(!this.login)
+    {
+      alert("Preencha o Login");      
     } 
-    else if(!this.senha){
-      alert("Senha inválida");    
+    else if(!this.senha)
+    {
+      alert("Preencha a Senha");    
     } 
+    else if(regexCaractereEspecial.test(this.login.toUpperCase()) || regexCaractereEspecial.test(this.senha.toUpperCase()))
+    {
+      alert("Login e Senha nao devem conter caracter Especiais. Exemplo: @#$%¨_-+"); 
+    } 
+    else if(regexAcento.test(this.login.toUpperCase()) || regexAcento.test(this.senha.toUpperCase()))
+    {
+      alert("Login e Senha nao devem conter acentos! Exemplo: ÁÀÂÃÉÈÍÏÓÔÕÖÚÑ"); 
+    }
     else{
      
       var objetoLogin : any = {
