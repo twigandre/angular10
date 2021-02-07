@@ -1,7 +1,7 @@
 import { Component, OnInit, Injectable, ViewChild, Output, EventEmitter, ElementRef, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginService } from '../shared/service/login.service';
+import { LoginService } from '../shared/service/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   parametros: any = {};
   statusLogin : number;
   
+  informacao : string = ""
+
   sucesso : number = 200;
   erro : number = 400;
 
@@ -29,27 +31,17 @@ export class LoginComponent implements OnInit {
   }
 
   validar(){
-
-    let regexCaractereEspecial = /^(?=.*[@!#$%^&*()/\\])[@!#$%^&*()/\\a-zA-Z0-9]$/; 
-    let regexAcento = /^[ÁÀÂÃÉÈÍÏÓÔÕÖÚÑ]+$/
-
+  
     if(!this.login)
     {
-      alert("Preencha o Login");      
+      this.informacao = "Preencha o Login";      
     } 
     else if(!this.senha)
     {
-      alert("Preencha a Senha");    
+      this.informacao = "Preencha a Senha";    
     } 
-    else if(regexCaractereEspecial.test(this.login.toUpperCase()) || regexCaractereEspecial.test(this.senha.toUpperCase()))
+    else
     {
-      alert("Login e Senha nao devem conter caracter Especiais. Exemplo: @#$%¨_-+"); 
-    } 
-    else if(regexAcento.test(this.login.toUpperCase()) || regexAcento.test(this.senha.toUpperCase()))
-    {
-      alert("Login e Senha nao devem conter acentos! Exemplo: ÁÀÂÃÉÈÍÏÓÔÕÖÚÑ"); 
-    }
-    else{
      
       var objetoLogin : any = {
         login : this.login,
@@ -58,9 +50,13 @@ export class LoginComponent implements OnInit {
 
       this.LoginService.logar(objetoLogin).subscribe((result: any) => 
       {
-          (result == 400 || !result) ? 
-            alert("Usuário nao Encontrado!") :
-              this.navigate();
+          if(!result){
+            alert("Falha ao tentar efetura login, Erro no Servidor!")
+          } if(result == 400) {
+            alert("Usuário nao Encontrado! Verifique o Login e Senha e Tente Novamente")
+          }else if(result == 200){
+            this.navigate();
+          }              
       });
     }
 
@@ -71,4 +67,26 @@ export class LoginComponent implements OnInit {
     this.router.navigate([rota]);
   }
   
+  verificaInput(nomeInput){
+
+    let existeCaractererEspecial : Boolean = false;
+
+    let regexValidacao = new RegExp("^[a-zA-Z0-9-Z\b]+$");
+
+    nomeInput == 'Login' ?
+       existeCaractererEspecial = !regexValidacao.test(this.login.toString()) :
+          existeCaractererEspecial = !regexValidacao.test(this.senha.toString());    
+
+    if(existeCaractererEspecial)
+    {
+      nomeInput == 'Login' ? this.login = "" : this.senha = "";
+      this.informacao = nomeInput + " nao pode conter caracterer especial, apenas numeros e letras sem acento."; 
+      return false;
+    }
+
+    this.informacao = "";
+    return true;
+  }
+
+
 }

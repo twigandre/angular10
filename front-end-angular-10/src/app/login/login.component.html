@@ -1,7 +1,11 @@
 <div>
 
-    <div class="tela-login">
+    <div style="margin-bottom: 10px;">
+        
+    </div>
 
+    <div class="tela-login">
+        <b *ngIf="informacao" style="color: red;">{{ informacao }}</b>
         <img src="../../assets/img/Hl-Imagem.jpeg">
         
         <div class="left">
@@ -16,6 +20,7 @@
                     id="login"
                     class="form-control"
                     [(ngModel)]="login"
+                    (change)="verificaInput('Login')"
                     >
                 </div>            
             </div>
@@ -31,6 +36,7 @@
                         id="login"
                         class="form-control"
                         [(ngModel)]="senha"
+                        (change)="verificaInput('Senha')"
                         >
                 </div>  
             </div>

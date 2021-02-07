@@ -13,7 +13,7 @@ import { FaturamentoComponent } from './faturamento/faturamento.component';
 import { ItauComponent } from './itau/itau.component';
 import { ManterCadernoCinzaComponent } from './caderno-cinza/formulario/manter-caderno-cinza.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentsModule } from './components/components.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { ComponentsModule } from './components/components.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ComponentsModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
