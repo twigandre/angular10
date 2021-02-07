@@ -8,6 +8,6 @@ namespace back_end_net_core_5.BusinesLogic
 {
     public interface ICriptografiaBll
     {
-        List<string> CriptografarLogin(LoginVM LoginSenha);
+        LoginVM CriptografarLogin(LoginVM LoginSenha);
     }
 }

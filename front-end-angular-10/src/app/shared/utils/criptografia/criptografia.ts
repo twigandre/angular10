@@ -4,13 +4,13 @@ export class Criptografia {
 
 
   public criptografarInputs(objeto : any){
-     var LoginCriptografado = this.criptografarLoginSenha(objeto.login.toUpperCase().split(""));
-     var SenhaCriptografada = this.criptografarLoginSenha(objeto.senha.toUpperCase().split(""));
-
-      return {
-        login : LoginCriptografado.slice(0, -1), //removendo ultimo caracterer string "&"
-        senha : SenhaCriptografada.slice(0, -1)
-      }
+    var LoginCriptografado = this.criptografarLoginSenha(objeto.login.toUpperCase().split(""));
+    var SenhaCriptografada = this.criptografarLoginSenha(objeto.senha.toUpperCase().split(""));
+    
+    return {
+      login : LoginCriptografado.slice(0, -1), //removendo ultimo caracterer string "&"
+      senha : SenhaCriptografada.slice(0, -1)
+    }
   }
 
   private criptografarLoginSenha(objeto : any){  

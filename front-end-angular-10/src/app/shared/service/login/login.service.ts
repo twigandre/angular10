@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ObjectUnsubscribedError } from 'rxjs';
-import { Criptografia } from '../../components/criptografia/criptografia';
+import { Criptografia } from '../../utils/criptografia/criptografia';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class LoginService {
 
   constructor(
       private httpClient: HttpClient
-      ) { }
+    ) { }
 
   public logar(loginSenha: any) {
 

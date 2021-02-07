@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using back_end_net_core_5.BusinesLogic;
 using back_end_net_core_5.ViewModel;
+using back_end_net_core_5.Utils.Enums;
 
 namespace back_end_net_core_5.Controllers
 {
@@ -20,10 +21,10 @@ namespace back_end_net_core_5.Controllers
         }
 
         [HttpPost]
-        public int Post([FromBody] LoginVM objeto)
+        public ActionResult Post([FromBody] LoginVM objeto)
         {
             var teste = _criptografia.CriptografarLogin(objeto);
-            return 200;
+            return Ok(RestResponse.SUCCESS);
         }
     }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, Injectable, ViewChild, Output, EventEmitter, Element
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../shared/service/login/login.service';
+import { EnumRestResponse } from '../shared/enums/EnumRestResponse';
+import { LoginVM } from '../shared/view-models/LoginVM';
 
 @Component({
   selector: 'app-login',
@@ -43,18 +45,19 @@ export class LoginComponent implements OnInit {
     else
     {
      
-      var objetoLogin : any = {
+      var objetoLogin : LoginVM = {
         login : this.login,
         senha : this.senha
       }
 
       this.LoginService.logar(objetoLogin).subscribe((result: any) => 
       {
-          if(!result){
-            alert("Falha ao tentar efetura login, Erro no Servidor!")
-          } if(result == 400) {
+          if(!result || result == EnumRestResponse.SERVER_ERROR){
+            alert("Falha ao efetura login")
+          } if(result === EnumRestResponse.NOT_FOUND) {
             alert("Usuário nao Encontrado! Verifique o Login e Senha e Tente Novamente")
-          }else if(result == 200){
+          }else if(result === EnumRestResponse.SUCCESS){
+            alert("Bem Vindo!");
             this.navigate();
           }              
       });

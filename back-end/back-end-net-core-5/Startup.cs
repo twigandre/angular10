@@ -31,7 +31,7 @@ namespace back_end_net_core_5
         {
             services.AddMvc();
                         
-            #region Cors - por enquanto configurado apenas para o localhost do front-end
+            #region Cors - por enquanto configurado apenas para o localhost angular
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -45,7 +45,7 @@ namespace back_end_net_core_5
             #endregion
 
             #region Context - Entity Framework
-
+             //ainda sera adicionado
             #endregion
 
             #region Injeção de Dependencia - BusinessLogic
