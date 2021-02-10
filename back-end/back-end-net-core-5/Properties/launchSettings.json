@@ -15,7 +15,7 @@
       "launchUrl": "weatherforecast",
       "environmentVariables": {
         "AWS_REGION_NAME": "us-east-1",
-        "AWS_BUCKET_NAME": "bucketandremesquita"
+        "AWS_BUCKET_NAME": "teste"
       }
     },
     "back_end_net_core_5": {
