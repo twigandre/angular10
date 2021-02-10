@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Amazon.S3.Transfer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,7 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using back_end_net_core_5.BusinesLogic;
+using back_end_net_core_5.Dao;
+using back_end_net_core_5.Dao.Repository;
+using back_end_net_core_5.Dao.Entityes;
+using back_end_net_core_5.BusinessLogic;
 
 namespace back_end_net_core_5
 {
@@ -31,27 +33,38 @@ namespace back_end_net_core_5
         {
             services.AddMvc();
                         
-            #region Cors - por enquanto configurado apenas para o localhost angular
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins,
-                builder =>
+            #region Cors - Only Angular Localhost
+                services.AddCors(options =>
                 {
-                    builder.WithOrigins("http://localhost:4200")
-                                        .AllowAnyHeader()
-                                        .AllowAnyMethod();
+                    options.AddPolicy(MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
                 });
-            });
             #endregion
 
-            #region Context - Entity Framework
-             //ainda sera adicionado
+            #region Data Base Configuration
+            //add name="DatabaseContext" connectionString="Server=192.168.0.251;Database=dbh_10306_cadsuf;User ID=dev;pwd=dev;MultipleActiveResultSets=true" providerName="System.Data.SqlClient"
+            var ConnectionString = @"server=localhost;database=aplication;user=root;password=123456";
+                services.AddDbContext<Context>(options => options.UseSqlServer(ConnectionString));
+                services.AddScoped<Context>();
+
+            #endregion
+                        
+            #region Repository - Entity Framework
+                // New entities need to be mapped here.
+                services.AddScoped<IRepository<LoginEntity>, EntityRepository<LoginEntity>>();
             #endregion
 
-            #region Injeção de Dependencia - BusinessLogic
-
-            services.AddScoped<ICriptografiaBll, CriptografiaBll>();
-
+            #region Dependency Injection - BusinessLogic
+                //Blls and your Intefaces, need to be mapped here
+                services.AddScoped<ICriptografiaBll, CriptografiaBll>();
+                services.AddScoped<IControleUsuarioBll, ControleUsuarioBll>();
+                services.AddScoped<IUploadBucketBll, UploadBucketBll>();
+                services.AddScoped<ITransferUtility, TransferUtility>();
             #endregion
 
             services.AddControllers();

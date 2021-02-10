@@ -14,7 +14,8 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "AWS_REGION_NAME": "us-east-1",
+        "AWS_BUCKET_NAME": "bucketandremesquita"
       }
     },
     "back_end_net_core_5": {

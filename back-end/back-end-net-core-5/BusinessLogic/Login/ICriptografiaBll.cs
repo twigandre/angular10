@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using back_end_net_core_5.ViewModel;
 
-namespace back_end_net_core_5.BusinesLogic
+namespace back_end_net_core_5.BusinessLogic
 {
     public interface ICriptografiaBll
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using back_end_net_core_5.BusinesLogic;
+using back_end_net_core_5.BusinessLogic;
 using back_end_net_core_5.ViewModel;
 using back_end_net_core_5.Utils.Enums;
 
@@ -15,16 +15,18 @@ namespace back_end_net_core_5.Controllers
     public class LoginController : ControllerBase
     {
         ICriptografiaBll _criptografia;
-        public LoginController(ICriptografiaBll criptografia)
+        IControleUsuarioBll _controleUsuario;
+        public LoginController(ICriptografiaBll criptografia,
+                               IControleUsuarioBll controleUsuario)
         {
             _criptografia = criptografia;
+            _controleUsuario = controleUsuario;
         }
 
         [HttpPost]
         public ActionResult Post([FromBody] LoginVM objeto)
         {
-            var teste = _criptografia.CriptografarLogin(objeto);
-            return Ok(RestResponse.SUCCESS);
+            return StatusCode(_controleUsuario.CreateUser(objeto));
         }
     }
 }
