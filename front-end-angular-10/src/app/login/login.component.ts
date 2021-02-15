@@ -50,17 +50,17 @@ export class LoginComponent implements OnInit {
         senha : this.senha
       }
 
-      this.LoginService.logar(objetoLogin).subscribe((result: any) => 
-      {
-          if(!result || result == EnumRestResponse.SERVER_ERROR){
-            alert("Falha ao efetura login")
-          } if(result === EnumRestResponse.NOT_FOUND) {
-            alert("Usuário nao Encontrado! Verifique o Login e Senha e Tente Novamente")
-          }else if(result === EnumRestResponse.SUCCESS){
-            alert("Bem Vindo!");
+      // this.LoginService.logar(objetoLogin).subscribe((result: any) => 
+      // {
+      //     if(!result || result == EnumRestResponse.SERVER_ERROR){
+      //       alert("Falha ao efetura login")
+      //     } if(result === EnumRestResponse.NOT_FOUND) {
+      //       alert("Usuário nao Encontrado! Verifique o Login e Senha e Tente Novamente")
+      //     }else if(result === EnumRestResponse.SUCCESS){
+      //       alert("Bem Vindo!");
             this.navigate();
-          }              
-      });
+         // }              
+      //});
     }
 
   }
@@ -89,6 +89,11 @@ export class LoginComponent implements OnInit {
 
     this.informacao = "";
     return true;
+  }
+
+  NovoUsuario(){
+    var rota: string = "/novo-usuario";
+    this.router.navigate([rota]);
   }
 
 

@@ -51,5 +51,9 @@ export class HomeComponent implements OnInit {
     this.isItau = false;
   }
   
+  logout(){
+    var rota: any = "/login";
+    this.router.navigate([rota]);
+  }
 
 }

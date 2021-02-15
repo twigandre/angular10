@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { FormularioCadastroUsuarioComponent } from './login/formulario-cadastro-usuario/formulario-cadastro-usuario.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { CadernoCinzaComponent } from './caderno-cinza/caderno-cinza.component';
@@ -19,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     LoginComponent,
+    FormularioCadastroUsuarioComponent,
     HomeComponent,
     CadernoCinzaComponent,
     DespesasGeraisComponent,

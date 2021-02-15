@@ -11,24 +11,21 @@
         <div class="left">
 
             <div class="row">
-                <br>
-                <div>
-                <label class="controle-label required"><b>Login:</b></label>
-                <input 
-                    type="text" 
-                    name="login"
-                    id="login"
-                    class="form-control"
-                    [(ngModel)]="login"
-                    (change)="verificaInput('Login')"
-                    >
-                </div>            
+                <div class="col-md-12">
+                    <label class="controle-label required"><b>Login:</b></label>
+                    <input 
+                        type="text" 
+                        name="login"
+                        id="login"
+                        class="form-control"
+                        [(ngModel)]="login"
+                        (change)="verificaInput('Login')"
+                        >
+                </div>
             </div>
-
-            <br>
-            
+            <br>            
             <div class="row">
-                <div>            
+                <div class="col-md-12">
                     <label class="controle-label required"><b>Senha:</b></label>
                     <input 
                         type="password" 
@@ -38,7 +35,7 @@
                         [(ngModel)]="senha"
                         (change)="verificaInput('Senha')"
                         >
-                </div>  
+                </div>                
             </div>
 
         </div>
@@ -46,20 +43,28 @@
         <br> 
 
         <div class="row">
-
-            <div class="left">
-                <button 
-                        type="button"                
-                        class="btn btn-warning btn-lg btn-block"
-                        (click)="validar()">
-                    <i class="fa fa-check"></i><b>Logar</b>
-                </button>
-            </div>
-
+            <div class="col-md-12">
+                <div class="left">
+                    <button 
+                            id="btn-logar"
+                            type="button"                
+                            class="btn btn-warning btn-lg btn-block"
+                            (click)="validar()"
+                            data-toggle="tooltip" 
+                            data-placement="top" 
+                            title="Logar">
+                                <i class="fa fa-check"></i><b>Logar</b>
+                    </button>
+                </div>
+                <br>
+                <div class="left">
+                    <b style="color: orange;">Não tem usuário?</b> 
+                    <b><a style="color: white; cursor: pointer; margin-left: 5px;">Cadastre-se</a></b>
+                <div>
+            </div>     
         </div>
 
     </div>    
     
 </div>
-<!-- <router-outlet></router-outlet> -->
 
