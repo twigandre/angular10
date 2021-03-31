@@ -1,0 +1,51 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/SEPractices4ML",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://localhost:61914",
+      "sslPort": 0
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "weatherforecast",
+      "environmentVariables": {
+        "URL_FRONT": "http://localhost:4200",
+        "AWS_SECRET_ACESS_KEY": "v9kVzwNg/yRDjHU+V4PRcnB3D3puDuFwZU5GO01w",
+        "DATABSE_PSW": "postgres",
+        "HOST_DATABASE": "postgres.cz8gtohi0559.us-east-2.rds.amazonaws.com",
+        "DATABASE_NAME": "postgres",
+        "AWS_REGION_NAME": "us-east-1",
+        "DATABASE_PORT": "5432",
+        "AWS_KEY_ID": "AKIA5ZCHVQTVMLSFXDFS",
+        "AWS_BUCKET_NAME": "andreitriad",
+        "DATABASE_USER": "postgres"
+      }
+    },
+    "back_end_net_core_5": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "weatherforecast",
+      "environmentVariables": {
+        "URL_FRONT": "http://localhost:4200",
+        "AWS_SECRET_ACESS_KEY": "v9kVzwNg/yRDjHU+V4PRcnB3D3puDuFwZU5GO01w",
+        "DATABSE_PSW": "postgres",
+        "HOST_DATABASE": "postgres.cz8gtohi0559.us-east-2.rds.amazonaws.com",
+        "AWS_REGION_NAME": "us-east-1",
+        "DATABASE_PORT": "5432",
+        "AWS_KEY_ID": "AKIA5ZCHVQTVMLSFXDFS",
+        "AWS_BUCKET_NAME": "andreitriad",
+        "DATABASE_USER": "postgres"
+      },
+      "applicationUrl": "http://localhost:5000"
+    }
+  }
+}

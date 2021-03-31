@@ -1,0 +1,210 @@
+<h1>SEPractices4ML Member</h1>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-lg-5">
+                <h3> {{(path === 'new') ? 'Register' : 
+                    (path === 'edit') ? 'Edit' :
+                    'View'}} Member </h3>    
+            </div>           
+        </div>
+    </div>
+       
+<br>
+        <div class="panel-body col-md-12">
+
+            <div class="row">
+                <div class="col-lg-1" *ngIf="exibirImagem">
+                    <img 
+                    src="{{ parametros.user.userImage }}" 
+                    alt="Avatar" 
+                    style="margin-top: 19px;
+                    vertical-align: middle;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;">
+                </div>
+                <div class="col-lg-4">
+                    <label class="controle-label"><b>Name:</b><b style="color: red;">*</b></label>
+                        <input 
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Your Name"
+                            class="form-control"
+                            [(ngModel)]="parametros.name"
+                            [disabled]="disableName">
+                </div>
+                <div class="col-lg-2 espaçamento" *ngIf="path=='edit'">
+                    <button 
+                        (click)="habilitarButtonEdit()"
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: DodgerBlue; cursor: pointer;">
+                            <i style="color: white;" class="fa fa-edit" aria-hidden="true"></i>
+                            <b style="color: white;"> Edit</b>
+                    </button>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <label class="controle-label"><b>Email:</b><b style="color: red;">*</b></label>
+                        <input 
+                            type="text"
+                            name="email"
+                            placeholder="Your Email"
+                            id="email"
+                            class="form-control"
+                            [(ngModel)]="parametros.email"
+                            [disabled]="disableEmail">
+                </div>
+                <div class="col-lg-2 espaçamento" *ngIf="path=='edit'">
+                    <button 
+                        (click)="habilitarButtonEmail()"
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: DodgerBlue; cursor: pointer;">
+                            <i style="color: white;" class="fa fa-edit" aria-hidden="true"></i>
+                            <b style="color: white;"> Edit</b>
+                    </button>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <label class="controle-label">
+                        <b>Degree:</b>
+                        <b style="color: red;"> *</b>
+                    </label>
+                    
+                    <!-- [selected]="model.situacao == 0" -->
+                    <select
+                        [(ngModel)]="parametros.degree" [disabled]= "path == 'view'"
+                        name="degree" id="degree" class="form-control" placeolder="Select your Option">
+                        <option value="0">0. Student</option>
+                        <option value="1">1. Graduate</option>
+                        <option value="2" >2. Specialist</option>
+                        <option value="3">3. M.D.</option>
+                        <option value="3">4. Ph.D.</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <label class="controle-label required">
+                        <b>Organization:</b>
+                        <b style="color: red;"> *</b>
+                    </label>
+                    <input 
+                        [disabled]= "path == 'view'"
+                        type="text"
+                        name="organization"
+                        placeholder="Your Organization"
+                        id="organization"
+                        class="form-control"
+                        [(ngModel)]="parametros.organization">                    
+                </div>
+            </div>
+            <br>
+
+            <div class="row espacamento-linhas">
+                <div class="col-lg-5">
+                    <label class="controle-label"><b>Do you currently work at?</b></label>
+                    <div class="radio i-checks" >
+                        <label class="m-r-md">
+                            <input 
+                                [disabled]= "path == 'view'"
+                                [(ngModel)]="parametros.currentlyWork"
+                                #publica 
+                                type="radio" 
+                                name="radio-currently-work" 
+                                value="1">
+                                    <i></i> Industry Software (Startup /Small /Large Company)
+                        </label>
+                        <label>
+                            <input 
+                                [disabled]= "path == 'view'"
+                                [(ngModel)]="parametros.currentlyWork"
+                                #privada 
+                                type="radio" 
+                                name="radio-currently-work" 
+                                value="2">
+                                    <i></i> Academic /Laboratory
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <label class="controle-label required">
+                        <b>Area of actuation/ role:</b>
+                        <b style="color: red;"> *</b>
+                    </label>
+                    <input 
+                        [disabled]= "path == 'view'"
+                        type="text"
+                        name="area-actuation"
+                        id="area-actuation"
+                        class="form-control"
+                        placeholder="Your actuation/ role"
+                        [(ngModel)]="parametros.areaActuationRole">                    
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <label class="controle-label required">
+                        <b>Web Site</b>
+                    </label>
+                    <input 
+                        type="text"
+                        name="organization"
+                        id="organization"
+                        class="form-control"
+                        placeholder="Your actuation/ role"
+                        [(ngModel)]="parametros.webSite"
+                        [disabled]= "path == 'view'">                    
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        <div class="painel-footer">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="pull-right">
+                    <button 
+                        routerLink="/sepractices4ml/members" 
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: lightgray; cursor: pointer; margin-left: 10px;">
+                            <i style="color: black;" class="fa fa-arrow-left " aria-hidden="true"></i>
+                            <b style="color: black;"> Back</b>
+                    </button>
+                    <button 
+                        (click)="validar()"
+                        *ngIf="path != 'view'"
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: DodgerBlue; cursor: pointer; margin-left: 10px;">
+                            <i style="color: white;" class="fa fa-save" aria-hidden="true"></i>
+                            <b style="color: white;"> Save</b>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+

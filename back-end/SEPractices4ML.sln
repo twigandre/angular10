@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEPractices4ML", "SEPractices4ML.csproj", "{C07FB3FE-8439-4DF8-940F-3C3A6523902B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C07FB3FE-8439-4DF8-940F-3C3A6523902B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07FB3FE-8439-4DF8-940F-3C3A6523902B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07FB3FE-8439-4DF8-940F-3C3A6523902B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07FB3FE-8439-4DF8-940F-3C3A6523902B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A31026E-5739-4B63-A472-908D950E7546}
+	EndGlobalSection
+EndGlobal

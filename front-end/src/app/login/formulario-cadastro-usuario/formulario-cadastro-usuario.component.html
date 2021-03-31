@@ -1,0 +1,220 @@
+<div style="width: 1500px; position: absolute; top:-5%; left: 30%; overflow-y: none;">
+    <div style="margin-top: 50px; margin-left: 50px;">
+        <h1>SEPractices4ML</h1>
+        <h4>User Register</h4>
+
+        <div class="row" style="margin-top: -30px;">
+            <div class="col-md-4">
+                <div class="pull-right">
+                    <b>Required Fields</b>  
+                    <b style="color: red">*</b>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="panel panel-default">
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="controle-label required"><b>Profile Image:</b></label>
+                            <div>
+                                <img 
+                                    src="{{ IconUser }}" 
+                                    alt="Avatar" 
+                                    class="avatar"
+                                >
+                                <div style="margin-left: 43px; margin-top:-30px;" *ngIf="!exbirFacebookEGoogle">
+                                    <label for="file-upload" class="custom-file-upload">
+                                        <i *ngIf="!parametros.userImage" class="fa fa-plus"></i>
+                                        <i *ngIf="parametros.userImage" class="fa fa-edit"></i>
+                                    </label>
+                                    <input 
+                                        type="file" 
+                                        accept="image/*"
+                                        id="file-upload"
+                                        name="file-upload" 
+                                        (change)="onFileChange($event)" 
+                                        size="60"
+                                        />
+                                </div>
+
+                                <!-- 
+                                <div *ngIf="parametros.userImage" style="margin-left: 73px; margin-top: -38px;">
+                                    <a (click)="limparImagem()"> <i class="fa fa-trash"></i> </a>
+                                </div> 
+                                -->
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="controle-label required">
+                                <b>Name:</b>
+                                <b style="color: red">*</b>
+                            </label>
+                            <input 
+                                type="text"
+                                name="name"
+                                id="name"
+                                class="form-control"
+                                style="resize: none;"
+                                [disabled]="exbirFacebookEGoogle"
+                                [(ngModel)]="parametros.name">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="controle-label required">
+                                <b>Email:</b>
+                                <b style="color: red">*</b>
+                            </label>
+                            <input 
+                                type="text"
+                                name="email"
+                                id="email"
+                                class="form-control"
+                                style="resize: none;"
+                                [disabled]="exbirFacebookEGoogle"
+                                [(ngModel)]="parametros.email">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="controle-label required">
+                                <b>Username:</b>
+                                <b style="color: red">*</b>
+                            </label>
+                            <input 
+                                type="text"
+                                name="username"
+                                id="username"
+                                class="form-control"
+                                style="resize: none;"
+                                [disabled]="exbirFacebookEGoogle"
+                                [(ngModel)]="parametros.userName">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="controle-label required">
+                                <b>Password:</b>
+                                <b style="color: red">*</b>
+                            </label>
+                            <input 
+                                type="password"
+                                name="password"
+                                id="password"
+                                class="form-control"
+                                style="resize: none;"
+                                [disabled]="exbirFacebookEGoogle"
+                                [(ngModel)]="parametros.password">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="controle-label required">
+                                <b>Password Confirm:</b>
+                                <b style="color: red">*</b>
+                            </label>
+                            <input 
+                                type="password"
+                                name="password-confirm"
+                                id="password-confirm"
+                                class="form-control"
+                                style="resize: none;"
+                                [disabled]="exbirFacebookEGoogle"
+                                [(ngModel)]="parametros.passwordConfirm">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row" style="margin-left: 48px;">
+                        <div class="col-md-4">
+                            <div>
+                                <input 
+                                    type="checkbox" 
+                                    class="form-check-input" 
+                                    id="other-connections" 
+                                    name="other-connections"
+                                    (change)="exibirRedesSociais()">
+                                    <b>Do you are connected to Google Acoount?</b>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" style="margin-left: 8px;" *ngIf="exbirFacebookEGoogle">
+                        <div class="col-md-4">
+                            <div>
+                                <!-- 
+                                    <button 
+                                        (click)="loginWithFacebook()"
+                                        type="button"                
+                                        class="btn btn-sm"
+                                        style="background-color: DodgerBlue; cursor: pointer; margin-left: 10px;">
+                                            <i 
+                                                style="color: white;"                                             
+                                                class="fa fa-facebook-square" 
+                                                aria-hidden="true"></i>
+                                            <b style="color: white;"> Login Whit Facebook </b>
+                                    </button> 
+                                -->
+                                <button                                    
+                                    (click)="loginWithGoogle()"
+                                    type="button"                
+                                    class="btn btn-sm"
+                                    style="background-color: crimson; cursor: pointer; margin-left: 10px;">
+                                        <i 
+                                            style="color: white;"                                            
+                                            class="fa fa-google-plus-official" 
+                                            aria-hidden="true">
+                                        </i>
+                                        <b style="color: white;"> Login Whit Google Account </b>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="pull-right">
+                                <button 
+                                    routerLink="/login" 
+                                    type="button"                
+                                    class="btn btn-sm"
+                                    style="background-color: lightgray; cursor: pointer; margin-left: 10px;">
+                                        <i style="color: black;" class="fa fa-arrow-left " aria-hidden="true"></i>
+                                        <b style="color: black;"> Back</b>
+                                </button>
+                                <button 
+                                    *ngIf="!exbirFacebookEGoogle"
+                                    (click)="salvarUsuario()"
+                                    type="button"                
+                                    class="btn btn-sm"
+                                    style="background-color: DodgerBlue; cursor: pointer; margin-left: 10px;">
+                                        <i style="color: white;" class="fa fa-plus" aria-hidden="true"></i>
+                                        <b style="color: white;"> Submit</b>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</div>

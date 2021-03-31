@@ -1,0 +1,68 @@
+<h1>SEPractices4ML</h1>
+<h4>Software Engineering Practices Repository to assist of developing ML systems</h4>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <label class="controle-label required"><b>Research Practices:</b></label>
+                    <input 
+                        type="text"
+                        name="serch-members"
+                        id="serch-members"
+                        class="form-control"
+                        placeholder="Practice name"
+                        [(ngModel)]="parametros.name">                   
+            </div>
+        </div>  
+        <div class="col-md-3" style="margin-top: 35px;">
+            <div>
+                <div class="margin-botao-novo">
+                    <button 
+                        id="btn-buscar"
+                        type="button"                
+                        class="btn btn-sm"
+                        (click)="buscar('buscar')"
+                        data-toggle="tooltip" 
+                        data-placement="top" 
+                        title="Search Practices"
+                        style="background-color: DodgerBlue; cursor: pointer;">
+                            <i style="color: white;" class="fa fa-search"></i>
+                            <b style="color: white;"> Search</b>
+                    </button>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="col-md-6" style="margin-top: 35px;">
+            <div class="pull-right">
+                <div class="margin-botao-novo">
+                    <button 
+                        id="btn-buscar"
+                        type="button"                
+                        class="btn btn-sm"
+                        (click)="limpar()"
+                        data-toggle="tooltip" 
+                        data-placement="top" 
+                        title="Refresh"
+                        style="background-color: DodgerBlue; cursor: pointer; margin-right: 20px;">
+                            <i style="color: white;" class="fa fa-refresh"></i>
+                            <b style="color: white;"> Refresh</b>
+                    </button>
+                    <button 
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: DodgerBlue;"
+                        routerLink="/sepractices4ml/practices/new">
+                            <b style="color: white;">New +</b>
+                    </button>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+
+<grid-practices 
+    *ngIf="exibirGrid"
+    [(parametros)]="arrayPractices">
+</grid-practices>

@@ -1,0 +1,339 @@
+<h1>Register new Practices</h1>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading"><h3>Details of the practice</h3></div>
+
+    <div class="panel-body">
+        
+        <div *ngIf="paginaSelecionada == 1">
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Name:</b></label>
+                        <textarea 
+                            name="name"
+                            id="name"
+                            class="form-control"
+                            rows="2"
+                            style="resize: none;"
+                            [disabled]="(path=='view') ? true : null"
+                            [(ngModel)]="parametros.name"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Description:</b></label>
+                        <textarea 
+                            name="description"
+                            id="description"
+                            class="form-control"
+                            rows="4"
+                            style="resize: none;"
+                            [disabled]="(path=='view') ? true : null"
+                            [(ngModel)]="parametros.description"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10" *ngIf=" flagTerminouConsultaAuthors && path !== 'view' ">
+                    <label class="controle-label required"><b>Authors:</b></label>
+                    <!-- (click)="spinnerClick1($event)" -->
+                    <select 
+                        *ngIf="objetoAuthorCombobox.length > 0"
+                        id="descricao-glosa" 
+                        name="descricao-glosa" 
+                        class="form-control" 
+                        [(ngModel)]="idAnalistaSelecionado"  
+                        (click)="spinnerClick($event)"                      
+                        [disabled]="isDesabilitado" 
+                        required>
+                            <option selected value="">Selecione uma opção</option>    
+                            <option *ngFor="let item of objetoAuthorCombobox" value="{{item.idUsuario}}">                               
+                                {{item.name}}
+                            </option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div *ngIf="objetoPracticesAuthors != undefined">
+                <div class="row">
+                    <div class="col-md-12">
+                            <span *ngFor="let item of objetoPracticesAuthors; let i = index" [attr.data-index]="i">
+                                    <img 
+                                    src="{{ item.userImage }}" 
+                                    alt="Avatar" 
+                                    style="margin-top: -10px;
+                                    vertical-align: middle;
+                                    margin-left: 5px;
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 50%;">
+                                        <b style="margin-left: 10px; margin-top:-30px;">{{item.name}}</b>         
+                                        <i  
+                                            *ngIf=" path != 'view' "
+                                            (click)="removerAutor(item)"
+                                            class = "fa fa-trash" 
+                                            data-toggle = "tooltip" 
+                                            data-placement = "top" 
+                                            title = "Remover autor"
+                                            style = "color:red; 
+                                                    cursor: pointer; 
+                                                    margin-left:10px;"
+                                        >
+                                        </i>                                      
+                            </span>                         
+                    </div>
+                </div>            
+            </div>               
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Types os AI/ML applications:</b></label>
+                        <textarea 
+                            name="types-ai-ml"
+                            id="types-ai-ml"
+                            class="form-control"
+                            rows="3"
+                            style="resize: none;"
+                            [(ngModel)]="parametros.typesAiMlApplications"
+                            [disabled]="(path=='view') ? true : null"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Organization Context:</b></label>
+                        <textarea 
+                            name="organization-context"
+                            id="organization-context"
+                            class="form-control"
+                            rows="3"
+                            style="resize: none;"
+                            [(ngModel)]="parametros.organizationContext"
+                            [disabled]="(path=='view') ? true : null"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        <div *ngIf="paginaSelecionada == 2">
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>SE Knowledge Areas:</b></label>
+                        <textarea 
+                            name="se-knowledge-areas"
+                            id="se-knowledge-areas"
+                            class="form-control"
+                            rows="3"
+                            style="resize: none;"
+                            [(ngModel)]="parametros.seKnowLedge"
+                            [disabled]="(path=='view') ? true : null"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Contribuition Types:</b></label>
+                        <textarea 
+                            name="contribuition-types"
+                            id="contribuition-types"
+                            class="form-control"
+                            rows="3"
+                            style="resize: none;"
+                            [(ngModel)]="parametros.contribuitionTypes"
+                            [disabled]="(path=='view') ? true : null"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Files:</b></label>
+                    <div *ngIf=" path != 'view' ">
+                    <b style="color:red;">(Only PDF or Image)</b>
+                    <!--accept="application/pdf"  image/*-->
+                        <input 
+                            type="file"                         
+                            id="arquivo" 
+                            name="arquivo" 
+                            (change)="onFileChange($event)" 
+                            style="display: block; padding: 5px; width: 80%;"
+                            [disabled]="(path=='view') ? true : null"
+                        />
+                        <div class="text-danger">Max size: 10Mb</div>
+                    </div>
+                </div>
+            </div>      
+
+            <div class="row" style="margin-left: 15px;">
+                <div *ngIf="flagTemAnexo" class="col-md-12">
+                    <b>Arquivos:</b>
+                    <div 
+                        *ngFor="let item of objetoAnexos; let i = index" [attr.data-index]="i">
+                        <div style="margin-top: 10px;">
+                            <div>
+                                <span> {{item.name}} </span>
+                                <button 
+                                    style="margin-left: 10px;"
+                                    type="button" 
+                                    class="btn btn-info btn-sm" 
+                                    data-toggle="tooltip" 
+                                    title="Baixar"
+                                    (click)="baixarAnexo(item)">
+                                        <i class="fa fa-download"></i>
+                                </button>
+                                <button 
+                                    style="margin-left: 10px;"
+                                    type="button" 
+                                    class="btn btn-danger btn-sm" 
+                                    data-toggle="tooltip" 
+                                    title="Excluir"
+                                    (click)="RemoverAnexo(item)"
+                                    [disabled]="(path=='view') ? true : null">
+                                        <i class="fa fa-trash-o"></i>
+                                </button>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>Link:</b></label>
+                        <textarea 
+                            name="link"
+                            id="link"
+                            class="form-control"
+                            rows="1"
+                            style="resize: none;"
+                            [(ngModel)]="parametros.link"
+                            [disabled]="(path=='view') ? true : null"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <label class="controle-label required"><b>References describing the Practice:</b></label>
+                        <textarea 
+                            name="references-describing"
+                            id="references-describing"
+                            class="form-control"
+                            rows="3"
+                            style="resize: none;"
+                            [(ngModel)]="parametros.referencesDescribing"
+                            [disabled]="(path=='view') ? true : null"
+                        >
+                        </textarea>
+                </div>
+            </div>
+            <br>
+
+        </div>        
+
+        <div class="row">
+            <div class="col-md-10">   
+                <div style="left: 50%;position: absolute;transform: translateX(-50%);">  
+                    <button 
+                        (click)="selectPaged(2)" 
+                        [disabled]="paginaSelecionada === 2" 
+                        type="button"                
+                        class="btn btn-sm pull-right"
+                        style="background-color: rgb(255, 145, 0); cursor: pointer; margin-left: 10px;">
+                            <i style="color: black;" class=" fa fa-hand-o-right " aria-hidden="true"></i>
+                            <b style="color: black;"> Next </b>
+                    </button>
+                    <button 
+                        (click)="selectPaged(1)" 
+                        [disabled]="paginaSelecionada === 1"             
+                        type="button"                
+                        class="btn btn-sm pull-right"
+                        style="background-color: rgb(255, 145, 0); cursor: pointer; margin-left: 10px;">
+                            <i style="color: black;" class=" fa fa-hand-o-left " aria-hidden="true"></i>
+                            <b style="color: black;"> Back </b>
+                    </button>
+                </div>
+                <div class="pull-right">             
+                    <button 
+                        routerLink="/sepractices4ml/practices" 
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: lightgray; cursor: pointer; margin-left: 10px;">
+                            <i style="color: black;" class=" fa fa-reply-all " aria-hidden="true"></i>
+                            <b style="color: black;"> Exit </b>
+                    </button>
+                    <button 
+                        (click)="validar()"
+                        *ngIf=" path != 'view' && paginaSelecionada === 2"
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: DodgerBlue; cursor: pointer; margin-left: 10px;">
+                            <i style="color: white;" class=" fa fa-save " aria-hidden="true"></i>
+                            <b style="color: white;"> Save</b>
+                    </button>
+                    <button 
+                        *ngIf=" path == 'view' "
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: DodgerBlue; cursor: pointer; margin-left: 10px;">
+                            <i style="color: white;" class=" fa fa-thumbs-o-up " aria-hidden="true"></i>
+                            <b style="color: white;"> Like</b>
+                    </button>
+                    <button 
+                        *ngIf=" path == 'view' "
+                        (click)="exibirComentario()"
+                        type="button"                
+                        class="btn btn-sm"
+                        style="background-color: white; cursor: pointer; margin-left: 10px;">
+                            <i style="color: Black;" class=" fa fa-comment-o " aria-hidden="true"></i>
+                            <b style="color: Blacks;"> {{ exibirComentarios == false ? 'Comments' : 'Close Comments' }}</b>
+                    </button>               
+                </div>
+            </div>
+        </div>        
+
+        <br><br>
+
+        <div class="row">
+            <div class="col-md-10">
+               
+            </div>
+        </div>
+        <br>
+
+    </div>
+<div id="comments">
+    <app-coment-practices 
+    *ngIf="exibirComentarios" 
+     #CommentsComponent
+    [(practicesInput)]="parametros"
+    (enviarInformacaoComentario)="OutputInfoComents($event)">
+    </app-coment-practices>
+</div>
+
+

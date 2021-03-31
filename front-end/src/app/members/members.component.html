@@ -1,0 +1,61 @@
+<h1>SEPractices4ML</h1>
+<h4>Software Engineering Practices Repository to assist of developing ML systems</h4>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <label class="controle-label required"><b>Research a Member:</b></label>
+                    <input 
+                        type="text"
+                        name="serch-members"
+                        id="serch-members"
+                        class="form-control"
+                        placeholder="Member name"
+                        [(ngModel)]="name">                   
+            </div>
+        </div>  
+        <div class="col-md-2" style="margin-top: 35px;">
+            <div>
+                <div class="margin-botao-novo">
+                    <button 
+                        id="btn-buscar"
+                        type="button"                
+                        class="btn btn-sm"
+                        (click)="buscar()"
+                        data-toggle="tooltip" 
+                        data-placement="top" 
+                        title="Search Members"
+                        style="background-color: DodgerBlue; cursor: pointer;">
+                            <i style="color: white;" class="fa fa-search"></i>
+                            <b style="color: white;"> Search</b>
+                    </button>
+                </div>
+            </div>
+        </div>   
+        <div class="col-md-7" style="margin-top: 35px;">
+            <div class="pull-right">
+                <div class="margin-botao-novo">
+                    <button 
+                        id="btn-buscar"
+                        type="button"                
+                        class="btn btn-sm"
+                        (click)="limpar()"
+                        data-toggle="tooltip" 
+                        data-placement="top" 
+                        title="Refresh"
+                        style="background-color: DodgerBlue; cursor: pointer;">
+                            <i style="color: white;" class="fa fa-refresh"></i>
+                            <b style="color: white;"> Refresh</b>
+                    </button>
+                </div>
+            </div>
+        </div>   
+    </div> 
+
+</div>
+
+<grid-members 
+    *ngIf="exibeGrid" 
+    [(parametros)]="parametros">
+</grid-members>

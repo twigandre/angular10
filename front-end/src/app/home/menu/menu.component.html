@@ -1,0 +1,83 @@
+<div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">            
+            <a class="navbar-brand home-link" [routerLink]="['/sepractices4ml/practices']" routerLinkActive="router-link-active" > 
+                <i class="fa fa-bars"></i>  Home 
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" 
+                       [routerLink]="['/sepractices4ml/practices']" 
+                       routerLinkActive="router-link-active" > 
+                        <i class="fa fa-superpowers"></i>  
+                        Practices 
+                    </a>
+                </li>
+                <li class="nav-item"
+                    [routerLink]="['/sepractices4ml/notifications']" 
+                    routerLinkActive="router-link-active">    
+
+                    <a  *ngIf="qtdNotification == 0"
+                        class="nav-link"> 
+                        <i class="fa fa-file-o"></i>  
+                        Notifications 
+                    </a>
+                    <a   
+                       *ngIf="qtdNotification > 0"    
+                       class="nav-link"                                            
+                       aria-hidden="true"
+                    >
+                    <i style="color: red;" class="fa fa-envelope-o"></i>
+                    <b style="color: red;"> {{ qtdNotification }} </b> <b style="color: red;"> New Notifications</b> 
+                    </a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link"
+                       routerLink="/sepractices4ml/members" > 
+                        <i class="fa fa-users"></i>  
+                        Members 
+                    </a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link"> 
+                        <i class="fa fa-info-circle"></i>  
+                        About 
+                    </a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0"> 
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a  
+                            class="nav-link"
+                            style="margin-right: 50px;">
+                                <i class="fa fa-user-o"></i> Profile
+                        </a>                 
+                    </li>
+                    <li class="nav-item ">
+                        <a 
+                            (click)="logout()"
+                            class="nav-link">
+                                <i class="fa fa-arrow-left"></i> Log Out
+                        </a>
+                    </li>
+                  </ul>                   
+                   
+              </form>
+            </div>
+          </nav>     
+    </header>
+
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+        <div class="loading">
+            <div class="preloader">
+              <div class="preloader4">
+                <mat-spinner color="accent" style="top: 50%; left: 50%;"></mat-spinner>
+              </div>
+            </div>
+        </div>           
+    </div>
+</div>
+
